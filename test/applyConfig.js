@@ -1,4 +1,4 @@
-const { writeFileSync, readFileSync } = require('fs');
+const { writeFileSync, readFileSync, unlinkSync } = require('fs');
 const { expect } = require('chai');
 const { applyConfig } = require('../');
 
@@ -19,6 +19,10 @@ module.exports = function(environment) {
 
   return ENV;
 };`);
+  });
+
+  afterEach(function () {
+    unlinkSync('./config/environment.js');
   });
 
   it('can write config files with objects', function () {
@@ -44,6 +48,30 @@ module.exports = function(environment) {
     testFace: {
       test: 'face'
     }
+  };
+
+  return ENV;
+};`);
+  });
+
+  it('can write config files with single values', function () {
+    applyConfig({
+      isEmberCLIAddon() { return false; },
+    },
+    'historySupportMiddleware', true);
+
+    const result = readFileSync('./config/environment.js', 'utf8');
+    expect(result).to.equal(`'use strict';
+
+module.exports = function(environment) {
+  let ENV = {
+    modulePrefix: 'dummy',
+    environment,
+    rootURL: '/',
+    locationType: 'auto',
+    EmberENV: {},
+    APP: {},
+    historySupportMiddleware: true
   };
 
   return ENV;
