@@ -4,12 +4,14 @@
   "@authmaker/generator-express:version": "3.2.6",
   "scripts": {
     "test": "NODE_ENV=test mocha --recursive --reporter spec",
-    "test-watch": "npm run test -- -w --reporter min"
+    "test-watch": "npm run test -- -w --reporter min",
+    "lint": "eslint ."
   },
   "dependencies": {
     "recast": "^0.18.5"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
     "eslint": "^5.9.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.8.0",
