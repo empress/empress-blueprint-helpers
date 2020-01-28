@@ -77,4 +77,28 @@ module.exports = function(environment) {
   return ENV;
 };`);
   });
+
+  it('can overwrite config values when override is true', function () {
+    applyConfig({
+      isEmberCLIAddon() { return false; },
+    },
+    'locationType', 'trailing-history', true);
+
+    const result = readFileSync('./config/environment.js', 'utf8');
+    expect(result).to.equal(`'use strict';
+
+module.exports = function(environment) {
+  let ENV = {
+    modulePrefix: 'dummy',
+    environment,
+    rootURL: '/',
+    locationType: 'trailing-history',
+    EmberENV: {},
+
+    APP: {}
+  };
+
+  return ENV;
+};`);
+  });
 });
