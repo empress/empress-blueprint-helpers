@@ -1,20 +1,20 @@
 module.exports = {
-  "env": {
-    "node": true
+  env: {
+    node: true,
   },
-  "extends": "airbnb-base",
-  "overrides": [
+  extends: 'airbnb-base',
+  overrides: [
     {
-      "files": [
-        "test/**/*.js",
+      files: [
+        'test/**/*.js',
       ],
-      "env": {
-        "mocha": true
+      env: {
+        mocha: true,
       },
       rules: {
         'func-names': 0,
-        'prefer-arrow-callback': 0
-      }
-    }
-  ]
-}
+        'prefer-arrow-callback': 0,
+      },
+    },
+  ],
+};
