@@ -1,6 +1,6 @@
 const { writeFileSync, readFileSync, unlinkSync } = require('fs');
 const { expect } = require('chai');
-const { applyConfig } = require('../');
+const { applyConfig } = require('..');
 
 describe('applyConfig() function', function () {
   beforeEach(function () {

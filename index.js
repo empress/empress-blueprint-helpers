@@ -16,7 +16,7 @@ function buildValue(configObject) {
 
       if (Array.isArray(currentValue)) {
         currentValueNode = builders.arrayExpression(
-          currentValue.map(item => buildValue(item)),
+          currentValue.map((item) => buildValue(item)),
         );
       } else {
         currentValueNode = builders.literal(currentValue);
@@ -46,11 +46,11 @@ function applyConfig(project, configKey, configObject, override = false) {
     visitVariableDeclaration(path) {
       const { node } = path;
 
-      const env = node.declarations.find(declaration => declaration.id.name === 'ENV');
+      const env = node.declarations.find((declaration) => declaration.id.name === 'ENV');
 
       if (env) {
         let configFileObj = env.init.properties.find(
-          property => property.key.value === configKey || property.key.name === configKey,
+          (property) => property.key.value === configKey || property.key.name === configKey,
         );
 
         if (!configFileObj) {
@@ -91,10 +91,10 @@ function applyBuildConfig(configKey, configObject, override = false) {
       if (node.callee.name === 'EmberApp'
           || node.callee.name === 'EmberAddon') {
         // console.log(node, node.arguments)
-        const configNode = node.arguments.find(element => element.type === 'ObjectExpression');
+        const configNode = node.arguments.find((element) => element.type === 'ObjectExpression');
 
         let configFileObj = configNode.properties.find(
-          property => property.key.value === configKey || property.key.name === configKey,
+          (property) => property.key.value === configKey || property.key.name === configKey,
         );
 
         if (!configFileObj) {

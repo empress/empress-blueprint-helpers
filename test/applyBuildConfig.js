@@ -1,7 +1,7 @@
 const { writeFileSync, readFileSync, unlinkSync } = require('fs');
 const { expect } = require('chai');
 
-const { applyBuildConfig } = require('../');
+const { applyBuildConfig } = require('..');
 
 describe('applyBuildConfig() function', function () {
   beforeEach(function () {
