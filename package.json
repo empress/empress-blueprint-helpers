@@ -1,6 +1,6 @@
 {
   "name": "empress-blueprint-helpers",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "repository": "https://github.com/empress/empress-blueprint-helpers",
   "license": "MIT",
   "scripts": {
