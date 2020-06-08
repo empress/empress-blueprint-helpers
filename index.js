@@ -16,7 +16,7 @@ function buildValue(configObject) {
 
       if (Array.isArray(currentValue)) {
         currentValueNode = builders.arrayExpression(
-          currentValue.map(item => builders.literal(item)),
+          currentValue.map(item => buildValue(item)),
         );
       } else {
         currentValueNode = builders.literal(currentValue);

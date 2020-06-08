@@ -54,6 +54,43 @@ module.exports = function(environment) {
 };`);
   });
 
+  it.only('can write config files with arrays of objects', function () {
+    applyConfig({
+      isEmberCLIAddon() { return false; },
+    },
+    'field-guide', {
+      social: [{
+        name: 'github',
+        title: 'Design System Documentation - Repository',
+        link: 'https://github.com/empress/field-guide?update-with-your-repo-url',
+      }],
+    });
+
+    const result = readFileSync('./config/environment.js', 'utf8');
+    expect(result).to.equal(`'use strict';
+
+module.exports = function(environment) {
+  let ENV = {
+    modulePrefix: 'dummy',
+    environment,
+    rootURL: '/',
+    locationType: 'auto',
+    EmberENV: {},
+    APP: {},
+
+    'field-guide': {
+      social: [{
+        name: 'github',
+        title: 'Design System Documentation - Repository',
+        link: 'https://github.com/empress/field-guide?update-with-your-repo-url'
+      }]
+    }
+  };
+
+  return ENV;
+};`);
+  });
+
   it('can write config files with single values', function () {
     applyConfig({
       isEmberCLIAddon() { return false; },
