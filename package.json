@@ -16,7 +16,7 @@
     "eslint": "^7.2.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.21.1",
-    "mocha": "^7.2.0"
+    "mocha": "^10.2.0"
   },
   "engines": {
     "node": "8.* || >= 10.*"
